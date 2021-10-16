@@ -58,11 +58,11 @@ for miner in ${l_miners_rawdata[@]}
 do
   rec=$(echo ${miner} | grep -E 'card-title' | cut -f 2 -d '>' | cut -f 1 -d '<')
   if [[ ! -z ${rec} ]]; then s_miners_data="${rec}"; continue; fi
-  rec=$(echo ${miner} | grep -E 'Revenue' | cut -f 4 -d '>' | cut -f 1 -d '<' | grep -oP '\d+\.\d+' | head -n 1)
+  rec=$(echo ${miner} | grep -E 'Revenue' | cut -f 4 -d '>' | cut -f 1 -d '<' | grep -oE '\d+\.\d+' | head -n 1)
   if [[ ! -z ${rec} ]]; then s_miners_data="${s_miners_data}#${rec}"; continue; fi
-  rec=$(echo ${miner} | grep -E 'Hosting' | cut -f 4 -d '>' | cut -f 1 -d '<' | grep -oP '\d+\.\d+' | head -n 1)
+  rec=$(echo ${miner} | grep -E 'Hosting' | cut -f 4 -d '>' | cut -f 1 -d '<' | grep -oE '\d+\.\d+' | head -n 1)
   if [[ ! -z ${rec} ]]; then s_miners_data="${s_miners_data}#${rec}"; continue; fi
-  rec=$(echo ${miner} | grep -E 'Profit' | cut -f 4 -d '>' | cut -f 1 -d '<' | grep -oP '\d+\.\d+' | head -n 1)
+  rec=$(echo ${miner} | grep -E 'Profit' | cut -f 4 -d '>' | cut -f 1 -d '<' | grep -oE '\d+\.\d+' | head -n 1)
   if [[ ! -z ${rec} ]]; then s_miners_data="${s_miners_data}#${rec}"; fi
 
   l_miners_data+=(${s_miners_data})

@@ -63,9 +63,9 @@ do
   if [[ ! -z ${rec} ]]; then s_miners_data="${s_miners_data}#${rec}"; continue; fi
   rec=$(echo ${miner} | grep -E 'Price, EUR' | cut -f 4 -d '>' | cut -f 1 -d '<' | awk '{ print $1 }' | cut -f 1 -d '.')
   if [[ ! -z ${rec} ]]; then s_miners_data="${s_miners_data}#${rec}"; continue; fi
-  rec=$(echo ${miner} | grep -E 'Revenue' | cut -f 4 -d '>' | cut -f 1 -d '<' | grep -oP '\d+\.\d+' | head -n 1)
+  rec=$(echo ${miner} | grep -E 'Revenue' | cut -f 4 -d '>' | cut -f 1 -d '<' | grep -oE '\d+\.\d+' | head -n 1)
   if [[ ! -z ${rec} ]]; then s_miners_data="${s_miners_data}#${rec}"; continue; fi
-  rec=$(echo ${miner} | grep -E 'Hosting' | cut -f 4 -d '>' | cut -f 1 -d '<' | grep -oP '\d+\.\d+' | head -n 1)
+  rec=$(echo ${miner} | grep -E 'Hosting' | cut -f 4 -d '>' | cut -f 1 -d '<' | grep -oE '\d+\.\d+' | head -n 1)
   if [[ ! -z ${rec} ]]; then s_miners_data="${s_miners_data}#${rec}"; continue; fi
   rec=$(echo ${miner} | grep -E 'ROI' | cut -f 4 -d '>' | cut -f 1 -d '<' | awk '{ print $1 }')
   if [[ ! -z ${rec} ]]; then s_miners_data="${s_miners_data}#${rec}"; fi
